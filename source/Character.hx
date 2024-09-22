@@ -26,8 +26,6 @@ class Character extends FlxSprite
 	var garTrailTarget:FlxSprite;
 	var garTrail:FlxTrail;
 
-	public var daZoom:Float = 1;
-
 	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
 	{
 		super(x, y);
@@ -247,47 +245,6 @@ class Character extends FlxSprite
 				animation.addByPrefix('idle', 'GF Dancing Beat Hair blowing', 20);
 
 				addOffset('idle', 0, 250);
-			case 'gf-tabi':
-				// GIRLFRIEND CODE
-				tex = Paths.getSparrowAtlas('tabi/GF_TABI', 'curse');
-				frames = tex;
-				animation.addByPrefix('cheer', 'GF Cheer', 24, false);
-				animation.addByPrefix('singLEFT', 'GF left note', 24, false);
-				animation.addByPrefix('singRIGHT', 'GF Right Note', 24, false);
-				animation.addByPrefix('singUP', 'GF Up Note', 24, false);
-				animation.addByPrefix('singDOWN', 'GF Down Note', 24, false);
-				animation.addByIndices('danceLeft', 'GF Dancing Beat', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-				animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
-				animation.addByIndices('hairBlow', "GF Dancing Beat Hair blowing", [0, 1, 2, 3], "", 24);
-				animation.addByIndices('hairFall', "GF Dancing Beat Hair Landing", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "", 24, false);
-				animation.addByPrefix('scared', 'GF FEAR', 24);
-
-				addOffset('cheer');
-				addOffset('danceLeft', 0, -9);
-				addOffset('danceRight', 0, -9);
-
-				addOffset("singUP", 0, 4);
-				addOffset("singRIGHT", 0, -20);
-				addOffset("singLEFT", 0, -19);
-				addOffset("singDOWN", 0, -20);
-				addOffset('hairBlow', 45, -8);
-				addOffset('hairFall', 0, -9);
-
-				addOffset('scared', -2, -17);
-
-				playAnim('danceRight');
-
-			case 'gf-tabi-crazy':
-				// GIRLFRIEND CODE
-				tex = Paths.getSparrowAtlas('tabi/mad/PostExpGF_Assets', 'curse');
-				frames = tex;
-				animation.addByIndices('danceLeft', 'GF LayedDownHurt ', [0, 1, 2, 3, 4, 5, 6, 7], "", 24, false);
-				animation.addByIndices('danceRight', 'GF LayedDownHurt ', [8, 9, 10, 11, 12, 13, 14, 15], "", 24, false);
-
-				addOffset('danceLeft', -300, -250);
-				addOffset('danceRight', -300, -250);
-
-				playAnim('danceRight');
 			#if !MOD_ONLY
 			case 'dad':
 				// DAD ANIMATION LOADING CODE
@@ -854,6 +811,25 @@ class Character extends FlxSprite
 				animation.addByPrefix('meow', 'Dad meow', 24, false);
 				animation.addByPrefix('stare', 'Dad stare', 24, false);
 
+	playAnim('idle');
+
+			case 'whittyCrazyNeo': // whitty crazy (ballistic)
+				tex = Paths.getSparrowAtlas('WhittyCrazyNeo', 'bonusWeek');
+				frames = tex;
+				animation.addByPrefix('idle', 'Whitty idle dance', 24);
+				animation.addByPrefix('singUP', 'Whitty Sing Note UP', 24);
+				animation.addByPrefix('singRIGHT', 'whitty sing note right', 24);
+				animation.addByPrefix('singDOWN', 'Whitty Sing Note DOWN', 24);
+				animation.addByPrefix('singLEFT', 'Whitty Sing Note LEFT', 24);
+
+				addOffset('idle', 50);
+				addOffset("singUP", 50, 85);
+				addOffset("singRIGHT", 100, -75);
+				addOffset("singLEFT", 50);
+				addOffset("singDOWN", 75, -150);
+
+				playAnim('idle');
+
 				addOffset('idle');
 
 				addOffset("singUP", -6, 50);
@@ -1160,131 +1136,6 @@ class Character extends FlxSprite
 				addOffset('idle', 0, 140);
 
 				playAnim('idle');
-			case 'bf-tabi':
-				var tex = Paths.getSparrowAtlas('tabi/BOYFRIEND_TABI', 'curse');
-				frames = tex;
-				animation.addByPrefix('idle', 'BF idle dance', 24, false);
-				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
-				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
-				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
-				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
-				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
-				animation.addByPrefix('hey', 'BF HEY', 24, false);
-
-				animation.addByPrefix('firstDeath', "BF dies", 24, false);
-				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
-				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
-
-				animation.addByPrefix('scared', 'BF idle shaking', 24);
-
-				addOffset('idle', -5);
-				addOffset("singUP", -29, 27);
-				addOffset("singRIGHT", -38, -7);
-				addOffset("singLEFT", 12, -6);
-				addOffset("singDOWN", -10, -50);
-				addOffset("singUPmiss", -29, 27);
-				addOffset("singRIGHTmiss", -30, 21);
-				addOffset("singLEFTmiss", 12, 24);
-				addOffset("singDOWNmiss", -11, -19);
-				addOffset("hey", 7, 4);
-				addOffset('firstDeath', 37, 11);
-				addOffset('deathLoop', 37, 5);
-				addOffset('deathConfirm', 37, 69);
-				addOffset('scared', -4);
-
-				playAnim('idle');
-
-				flipX = true;
-			case 'bf-knife':
-				frames = Paths.getSparrowAtlas('tabi/mad/BF_Knife_death', 'curse');
-				animation.addByPrefix('idle', "BF dies", 24, false);
-				animation.addByPrefix('singUP', "BF dies", 24, false);
-				animation.addByPrefix('firstDeath', "BF dies", 24, false);
-				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
-				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
-
-				addOffset("singUP", -29, 27);
-				addOffset('firstDeath', 37, 11);
-				addOffset('deathLoop', 37, 5);
-				addOffset('deathConfirm', 37, 11);
-				addOffset('idle', 37, 11);
-
-				playAnim('idle');
-
-				flipX = true;
-			case 'tabi':
-				frames = Paths.getSparrowAtlas('tabi/TABI', 'curse');
-				animation.addByPrefix('idle', 'Dad idle dance', 24, false);
-				animation.addByPrefix('singUP', 'Dad Sing Note UP', 24, false);
-				animation.addByPrefix('singDOWN', 'Dad Sing Note DOWN', 24, false);
-				animation.addByPrefix('singLEFT', 'Dad Sing Note LEFT', 24, false);
-				animation.addByPrefix('singRIGHT', 'Dad Sing Note RIGHT', 24, false);
-
-				addOffset('idle');
-
-				addOffset("singUP", 44, 50);
-				addOffset("singRIGHT", -15, 11);
-				addOffset("singLEFT", 104, -28);
-				addOffset("singDOWN", -5, -108);
-
-				playAnim('idle');
-			case 'bf-tabi-crazy':
-				var tex = Paths.getSparrowAtlas('tabi/mad/BF_post_exp', 'curse');
-				frames = tex;
-				animation.addByPrefix('idle', 'BF idle dance', 24, false);
-				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
-				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
-				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
-				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
-				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
-				animation.addByPrefix('hey', 'BF HEY', 24, false);
-
-				animation.addByPrefix('firstDeath', "BF dies", 24, false);
-				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
-				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
-
-				animation.addByPrefix('scared', 'BF idle shaking', 24);
-
-				addOffset('idle', -5);
-				addOffset("singUP", -29, 27);
-				addOffset("singRIGHT", -38, -7);
-				addOffset("singLEFT", 12, -6);
-				addOffset("singDOWN", -10, -50);
-				addOffset("singUPmiss", -29, 27);
-				addOffset("singRIGHTmiss", -30, 21);
-				addOffset("singLEFTmiss", 12, 24);
-				addOffset("singDOWNmiss", -11, -19);
-				addOffset("hey", 7, 4);
-				addOffset('firstDeath', 37, 11);
-				addOffset('deathLoop', 37, 5);
-				addOffset('deathConfirm', 37, 69);
-				addOffset('scared', -4);
-
-				playAnim('idle');
-
-				flipX = true;
-			case 'tabi-crazy':
-				frames = Paths.getSparrowAtlas('tabi/mad/MadTabi', 'curse');
-				animation.addByPrefix('idle', 'MadTabiIdle', 24, false);
-				animation.addByPrefix('singUP', 'MadTabiUp', 24, false);
-				animation.addByPrefix('singDOWN', 'MadTabiDown', 24, false);
-				animation.addByPrefix('singLEFT', 'MadTabiLeft', 24, false);
-				animation.addByPrefix('singRIGHT', 'MadTabiRight', 24, false);
-
-				addOffset('idle', 0, -45);
-
-				addOffset("singUP", 50, 95);
-				addOffset("singRIGHT", 135, -25);
-				addOffset("singLEFT", 130, -10);
-				addOffset("singDOWN", 25, -60);
-
-				playAnim('idle');
 		}
 
 		dance();
@@ -1361,8 +1212,7 @@ class Character extends FlxSprite
 		{
 			switch (curCharacter)
 			{
-				case 'gf' | 'gf-whitty' | 'gf-arcade' | 'gf-christmas' | 'gf-car' | 'gf-pixel' | 'gf-hell' | 'gf-tied' | 'gf-rocks' | 'gf-tabi' |
-					'gf-tabi-crazy':
+				case 'gf' | 'gf-whitty' | 'gf-arcade' | 'gf-christmas' | 'gf-car' | 'gf-pixel' | 'gf-hell' | 'gf-tied' | 'gf-rocks':
 					if (!animation.curAnim.name.startsWith('hair'))
 					{
 						danced = !danced;
@@ -1398,7 +1248,7 @@ class Character extends FlxSprite
 			var daOffset = animOffsets.get(AnimName);
 			if (animOffsets.exists(AnimName))
 			{
-				offset.set(daOffset[0] * daZoom, daOffset[1] * daZoom);
+				offset.set(daOffset[0], daOffset[1]);
 			}
 			else
 				offset.set(0, 0);
@@ -1421,7 +1271,7 @@ class Character extends FlxSprite
 			}
 			if (curCharacter == "garcellodead" && FlxG.save.data.animEvents)
 			{
-				garTrailTarget.offset.set(daOffset[0] * daZoom, daOffset[1] * daZoom);
+				garTrailTarget.offset.set(daOffset[0], daOffset[1]);
 				garTrailTarget.animation.play(AnimName);
 			}
 			if (curCharacter == "exTricky")
@@ -1514,11 +1364,5 @@ class Character extends FlxSprite
 	public function quickAnimAdd(name:String = "", prefix:String = "", fps:Int = 24, looped:Bool = false)
 	{
 		animation.addByPrefix(name, prefix, fps, looped);
-	}
-
-	public function setZoom(?toChange:Float = 1):Void
-	{
-		daZoom = toChange;
-		scale.set(toChange, toChange);
 	}
 }
